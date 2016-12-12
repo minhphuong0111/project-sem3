@@ -10,38 +10,35 @@
     <link href="~/Content/admindashboard.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header class="panel">
-        @Html.Partial("_Header")
-    </header>
-    <article class="container-fluid content clearfix ">
-        <div class="col-md-2 " id="wrapper">
+    <div class="container-fluid">
+        <div class="col-md-2 navigate">
+            <div class="brand-logo">
+                <img class="img-logo" alt="CUSC STUDENT MANAGEMENT" src="~/Images/logo.png">
+            </div> <!-- end logo-->
+            
+                <hr class="break-line" />
+            <div class="menu clearfix">
+                <ul class="menu-ul">
+                    <li class="menu-li">STUDENT</li>
+                    <li class="menu-li">ABSENT</li>
+                    <li class="menu-li">DROP OUT</li>
 
-            <div id="sidebar-wrapper seft-nav">
-                <div class="brand">
-                    <h3>MENU</h3>
-                </div>
-                <div class="main-nav">
-                    <ul class="sidebar-nav">
+                </ul>
+                <hr class="break-line"/>
+                <ul class="menu-ul">
+                    <li class="menu-li">ACCOUNT</li>
+                    <li class="menu-li">LOGOUT</li>
+                    
 
-                        <li>
-                            <a class="menulink" href="#">EDUCATION PROGRAM</a>
-                        </li>
-                        <li>
-                            <a class="menulink" href="#">SUBJECT</a>
-                        </li>
-
-                    </ul>
-                </div>
+                </ul>
             </div>
-        </div>
-        <div class="col-md-10 bodyview">
-            @RenderBody()
-        </div>
-    </article>
+            
+        </div><!-- end side menu-->
 
-    <footer>
-        Design By LMPHUONG &copy;
-    </footer>
+        <div class="col-md-10">
+        @RenderBody()
+        </div> <!-- end content -->
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

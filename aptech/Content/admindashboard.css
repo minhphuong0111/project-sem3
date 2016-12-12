@@ -100,3 +100,43 @@ ul>li:hover{
     padding-left:0px;
     padding-right:0px;
 }
+
+/*new dashboard*/
+
+.navigate{
+    background-color:#222930;
+    padding:0px;
+    margin:0px;
+    height:100vh;
+    color:white;
+}
+
+.brand-logo{
+    text-align:center;
+}
+
+.menu{
+    float:left;
+    padding-left:0px;
+    margin-left:0px;
+    width:100%;
+    text-align:center;
+}
+.menu-ul{
+    padding-left:0px;
+    padding-bottom:0px;
+}
+
+.break-line{
+    border: 1px solid white;
+    box-shadow:1px 0px 0px 0px gray;
+}
+
+.menu-li{
+    padding-top:7px;
+    vertical-align:middle;
+}
+
+.menu-li:hover{
+    background-color:#428bca;
+}
