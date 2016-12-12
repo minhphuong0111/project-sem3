@@ -1,0 +1,55 @@
+﻿body {
+    /*background-image:url("../Images/loginBG.jpg");*/
+    background-color:#428bca;
+}
+/* LOGIN PAGE */
+
+.login-container{
+    
+    vertical-align:middle;
+    text-align:left;
+    border-radius:10px;
+    color:#A1ABAD;
+   /* background-image:url("../Images/loginBG.jpg");
+    background:fixed;*/
+   background-color:#428bca;
+}
+
+.login-form{
+    opacity:1;
+    margin-top:70px;
+    vertical-align:middle;
+    text-align:left;
+    border-radius:10px;
+    background-color:#222930;
+    padding-top:0px;
+    padding-left:40px;
+    padding-bottom:50px;
+    font-size:1.5em;
+}
+
+.editor{
+    max-width:100%;
+    width:90%;
+    padding-right:40px;
+    height:45px;
+    padding-bottom:20px;
+    font-size:1.1em;
+    vertical-align:middle;
+
+}
+.form-control{
+    
+}
+h2{
+    font-weight:bold;
+}
+
+.divbutton{
+    text-align:center;
+}
+
+.button{
+    margin-right:30px;
+    font-size:1.1em;
+}
