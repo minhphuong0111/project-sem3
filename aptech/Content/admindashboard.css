@@ -104,11 +104,12 @@ ul>li:hover{
 /*new dashboard*/
 
 .navigate{
-    background-color:#222930;
+    background-color:#428bca;
     padding:0px;
     margin:0px;
     height:100vh;
-    color:white;
+    color:#010426 ;
+    font-weight:bold;
 }
 
 .brand-logo{
@@ -138,7 +139,8 @@ ul>li:hover{
 }
 
 .menu-li:hover{
-    background-color:#428bca;
+    background-color:#010426;
+    color:white;
 }
 
 
