@@ -11,6 +11,7 @@ namespace aptech.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            /*return View("~/Views/AdminPartial/Userpage.cshtml");*/
             return View("~/Views/Admin/AdminLogin.cshtml");
         }
     }

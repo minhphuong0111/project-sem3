@@ -1,6 +1,7 @@
 ﻿body {
     /*background-image:url("../Images/loginBG.jpg");*/
     background-color:#428bca;
+    color:white;
 }
 /* LOGIN PAGE */
 
@@ -9,55 +10,59 @@
     vertical-align:middle;
     text-align:left;
     border-radius:10px;
-    color:#A1ABAD;
+    color:white;
    /* background-image:url("../Images/loginBG.jpg");
     background:fixed;*/
-   /*background-color:#428bca;*/
+   background-color:#222930;
    z-index:1;
    
 }
 
-.div-opacity{
-    z-index:99;
-    background-color:#428bca;
-    opacity:0;
-    position:fixed;
-    top:0px;
-    height:100vh;
-    
-}
+
 
 .login-form{
+    margin:0px;
+    color:white;
+    background-color:#222930;
     opacity:1;
     margin-top:70px;
     vertical-align:middle;
     text-align:left;
     border-radius:10px;
-    background-color:#222930;
+    background-color:white;
     padding-top:0px;
     padding-left:40px;
-    padding-bottom:50px;
+    padding-bottom:30px;
     font-size:1.5em;
+  
+    border:0.5px solid black;
     z-index:100;
 }
 
 .editor{
-    max-width:100%;
-    width:90%;
-    padding-right:40px;
+    
     height:45px;
     padding-bottom:0px;
     font-size:1.1em;
     vertical-align:middle;
     
-
+   
+    padding-right:40px;
+    margin-right:40px;
+}
+input{
+    
+    max-width:95%;
 }
 .form-control{
    
 }
-h2{
+h2, .form-caption{
     font-weight:bold;
-    color:white;
+    color:black;
+    height:30px;
+    
+    padding:0px;
 }
 
 .divbutton{
@@ -67,9 +72,29 @@ h2{
 .button{
     margin-right:30px;
     font-size:1.1em;
+    
 }
 
 .txt{
-     color:white;
+     color:#222930;
     padding-top:10px;
 }
+
+.button{ font-size:0.9em;}
+/*
+.login-form, col-md-4, form-group{padding:0px; margin:0px}
+.form-caption{
+height:50px; vertical-align:middle; border-radius:9px 9px 0px 0px;
+}
+h2{padding:0px; margin:0px; border-radius:10px;vertical-align:middle; padding-top:10px; color:white; text-align:center; }
+
+.form-content{
+padding-left:10px;
+padding-right:10px;
+}
+
+.editor{width:100%; padding-right:10px;}
+
+.divbutton{padding-button:20px;margin-bottom:20px;padding-right:0px; margin-right:0px; }
+.button{margin-right:0px; font-size:0.9em;}
+    */

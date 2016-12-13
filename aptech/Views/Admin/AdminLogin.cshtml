@@ -18,25 +18,27 @@
     <div class="container-fluid login-container">
         <div class="col-md-4"></div>
         <div class="login-form col-md-4 form-group">
-            <h2>LOG IN</h2>
-            @using (Html.BeginForm())
-            {
-                @Html.Label("User name", new { @class = "txt" }) <br />
-                <input type="text" class="editor form-control" placeholder="user name" />
-                @Html.Label("Password", new { @class = "txt" }) <br />
-                <input type="password" class="editor form-control" placeholder="password" /> <br/>
-                <div class="divbutton">
-                    <input type="button" class="btn button btn-primary" value="LOGIN" />
-                    <input type="button" class="btn button btn-primary" value="CALCEL" />
-                </div>
+       <!--     <div class="form-caption"> -->
+                <h2>LOG IN</h2>
+            <!--</div>-->
+           <!--  <div class="form-content"> -->
+                @using (Html.BeginForm())
+                {
+                    @Html.Label("User name", new { @class = "txt" }) <br />
+                    <input type="text" class="editor form-control" placeholder="user name" />
+                    @Html.Label("Password", new { @class = "txt" }) <br />
+                    <input type="password" class="editor form-control" placeholder="password" /> <br />
+                    <div class="divbutton">
+                        <input type="button" class="btn button btn-primary" value="LOGIN" />
+                        <input type="button" class="btn button btn-primary" value="CALCEL" />
+                    </div>
 
-            }
+                }
+         <!--   </div>-->
         </div>  
         <div class="col-md-4"></div>
     </div>
-    <div class="container-fluid col-md-12 div-opacity">
-
-    </div>
+   
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
