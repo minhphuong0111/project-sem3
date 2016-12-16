@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "dangkyhoclai";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+
+<h2>Đăng Ký Học Lại</h2>
+@using (Html.BeginForm())
+{
+    @Html.Label("Chọn Môn Học Mở", new { @class = "txt" })
+    <select class="dropdown">
+        <option>Lập Trình C</option>
+        <option>Lập Trình Java</option>
+        <option>Lập Trình PHP</option>
+        <option>Lập Trình ASP.NET</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Xem thông tin</button>
+    <br />
+    <br/>
+    @Html.Label("Thông Tin Môn Học Mở", new { @class = "txt" })
+    <table class="table table-striped">
+        <tr>
+            <td>@Html.Label("Giáo Viên", new { @class = "txt" })</td>        
+            <td>@Html.Label("Giáo Viên 1", new { @class = "txt" })</td>        
+        </tr>
+        <tr>
+            <td>@Html.Label("Thời gian bắt đầu", new { @class = "txt" })</td>
+            <td>@Html.Label("1/1/2017", new { @class = "txt" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Giờ học", new { @class = "txt" })</td>
+            <td>@Html.Label("A", new { @class = "txt" })</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Đăng Ký</button>
+}
+

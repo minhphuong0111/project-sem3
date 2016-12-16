@@ -97,8 +97,7 @@ ul>li:hover{
 }
 
 .col-md-10{
-    padding-left:0px;
-    padding-right:0px;
+    
 }
 
 /*new dashboard*/
@@ -143,4 +142,6 @@ ul>li:hover{
     color:white;
 }
 
-
+.renderbody{
+    margin-left:20px;
+}

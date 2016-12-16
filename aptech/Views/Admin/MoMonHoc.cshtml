@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "MoMonHoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mở Môn Học</h2>
+@using (Html.BeginForm())
+{
+    @Html.Label("Chọn Môn Học", new { @class ="txt"})
+    <select class="dropdown">
+        <option>Lập Trình C</option>
+        <option>Lập Trình Java</option>
+        <option>Lập Trình PHP</option>
+        <option>Lập Trình ASP.NET</option>
+    </select>
+    <br/>
+    @Html.Label("Thời Gian Bắt Đầu:")
+    <input type="date" />
+    <br/>
+    @Html.Label("Thời gian học")
+    <select class="dropdown">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+    <br/>
+    @Html.Label("Chọn Giáo Viên")
+    <select class="dropdown">
+        <option>Giáo Viên 1</option>
+        <option>Giáo Viên 2</option>
+        <option>Giáo Viên 3</option>
+        <option>Giáo Viên 4</option>
+    </select>
+    <br />
+    @Html.Label("Số Lượng Buổi")
+    <input type="number" min="0" value="1" />
+    <br />
+    <button class="btn btn-primary">Mở Môn Học</button>
+}
+

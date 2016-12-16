@@ -252,6 +252,9 @@
     <Content Include="Views\Shared\_IndexLayout.cshtml" />
     <Content Include="Views\AdminPartial\Userpage.cshtml" />
     <Content Include="Views\Admin\AdminLogin.cshtml" />
+    <Content Include="Views\Admin\DiemDanh.cshtml" />
+    <Content Include="Views\Admin\MoMonHoc.cshtml" />
+    <Content Include="Views\Admin\dangkyhoclai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

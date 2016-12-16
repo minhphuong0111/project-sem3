@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "DiemDanh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Điểm Danh</h2>
+@using(Html.BeginForm())
+{
+    @Html.Label("Mã Môn Học Mở: ", new { @class = "text"})
+    <select name="carlist" class="dropdown"  >
+        <option value="MHM1">MHM1</option>
+        <option value="saab">MHM2</option>
+        <option value="opel">MHM3</option>
+        <option value="audi">MHM4</option>
+    </select>
+    @Html.Label("Chọn ngày: ", new { @class = "text" })
+    <input type="date" class="chonngay" />
+    <button type="submit" class="btn btn-primary">Lọc Danh Sách</button>
+    
+    <!--hien thi danh sach-->
+    <div class="container-fluid danhsach" >
+        <table class="tblDanhSach table table-striped">
+            <tr>
+                <td>STT</td>
+                <td>Họ Tên</td>
+                <td>Vắng</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Lê Minh Phương</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Phan Chiến Thắng</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Trần Phước Vĩnh</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+        </table>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" style="float:right; margin-right:200px;" >Gửi</button> 
+}
