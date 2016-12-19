@@ -8,3 +8,4 @@
 /// <reference path="jssor.slider.mini.js" />
 /// <reference path="../content/docs.min.js" />
 /// <reference path="../content/ie10-viewport-bug-workaround.js" />
+/// <reference path="monhoc.js" />

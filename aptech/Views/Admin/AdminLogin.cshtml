@@ -22,17 +22,19 @@
                 <h2>LOG IN</h2>
             <!--</div>-->
            <!--  <div class="form-content"> -->
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("ktrDangNhap", "Admin", FormMethod.Post))
                 {
                     @Html.Label("User name", new { @class = "txt" }) <br />
-                    <input type="text" class="editor form-control" placeholder="user name" />
+                 <!--   <input type="text" name="user" value="" class="editor form-control" placeholder="username" /> -->
+                    @Html.TextBox("user", "", new { @class= "editor form-control" , @placeholder = "username"})
                     @Html.Label("Password", new { @class = "txt" }) <br />
-                    <input type="password" class="editor form-control" placeholder="password" /> <br />
+                    <input type="password" name="pass" value="" class="editor form-control" placeholder="password" /> 
+                    <input type="checkbox" name="chkgv" value="Giảng Viên" /> <span class="txt txtgv">Giảng Viên</span><br/>
                     <div class="divbutton">
-                        <input type="button" class="btn button btn-primary" value="LOGIN" />
-                        <input type="button" class="btn button btn-primary" value="CALCEL" />
+                        <button type="submit" class="btn button btn-primary" value="LOGIN" >LOGIN</button>
+                        <button type="reset" class="btn button btn-primary" >CANCEL</button>
                     </div>
-
+                    <span class="txt txtktra">@ViewBag.loi</span>
                 }
          <!--   </div>-->
         </div>  

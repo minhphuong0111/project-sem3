@@ -80,7 +80,7 @@ h2, .form-caption{
     padding-top:10px;
 }
 
-.button{ font-size:0.9em;}
+.button{ font-size:0.8em;}
 /*
 .login-form, col-md-4, form-group{padding:0px; margin:0px}
 .form-caption{
@@ -98,3 +98,7 @@ padding-right:10px;
 .divbutton{padding-button:20px;margin-bottom:20px;padding-right:0px; margin-right:0px; }
 .button{margin-right:0px; font-size:0.9em;}
     */
+
+.txtgv{
+    font-style:italic;
+}

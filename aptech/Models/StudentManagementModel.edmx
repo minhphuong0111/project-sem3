@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StudentManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuoiHoc">
+          <Key>
+            <PropertyRef Name="bhID" />
+          </Key>
+          <Property Name="bhID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="mhmID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="buoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bhNgay" Type="date" />
+        </EntityType>
+        <EntityType Name="ChuongTrinhHoc">
+          <Key>
+            <PropertyRef Name="ctID" />
+          </Key>
+          <Property Name="ctID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ctTen" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiemDanh">
+          <Key>
+            <PropertyRef Name="bhID" />
+            <PropertyRef Name="svmhID" />
+          </Key>
+          <Property Name="bhID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="svmhID" Type="int" Nullable="false" />
+          <Property Name="vang" Type="int" />
+          <Property Name="lydo" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GiangVien">
+          <Key>
+            <PropertyRef Name="gvID" />
+          </Key>
+          <Property Name="gvID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="gvTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="gvGioiTinh" Type="bit" Nullable="false" />
+          <Property Name="gvNgaySinh" Type="date" />
+          <Property Name="gvDiaChi" Type="nvarchar" MaxLength="200" />
+          <Property Name="gvDienThoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="gvMatKhau" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="gvThoiViec" Type="date" />
+        </EntityType>
+        <EntityType Name="LichThi">
+          <Key>
+            <PropertyRef Name="ltID" />
+          </Key>
+          <Property Name="ltID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="mhmID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ngaythi" Type="date" />
+          <Property Name="lanthi" Type="int" />
+        </EntityType>
+        <EntityType Name="LopHoc">
+          <Key>
+            <PropertyRef Name="lopID" />
+          </Key>
+          <Property Name="lopID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ctID" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="mhID" />
+          </Key>
+          <Property Name="mhID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="mhTen" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MonHocMo">
+          <Key>
+            <PropertyRef Name="mhmID" />
+          </Key>
+          <Property Name="mhmID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="mhID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="sobuoi" Type="int" Nullable="false" />
+          <Property Name="ngayBatDau" Type="date" />
+          <Property Name="giohoc" Type="nvarchar" MaxLength="2" />
+          <Property Name="gvID" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quanly">
+          <Key>
+            <PropertyRef Name="qlyID" />
+          </Key>
+          <Property Name="qlyID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="qlyMatKhau" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="qlyRole" Type="bit" />
+          <Property Name="qlyGioiTinh" Type="bit" />
+          <Property Name="qlyTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="qlyDiaChi" Type="nvarchar" MaxLength="200" />
+          <Property Name="qlyDienThoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="qlyNgaySinh" Type="date" />
+          <Property Name="qlyThoiViec" Type="date" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="svID" />
+          </Key>
+          <Property Name="svID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="svMatKhau" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="svTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="svGioiTinh" Type="bit" Nullable="false" />
+          <Property Name="svBirhday" Type="date" Nullable="false" />
+          <Property Name="svDiaChi" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="svDienThoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="lopID" Type="nvarchar" MaxLength="10" />
+          <Property Name="svNghiHoc" Type="date" />
+        </EntityType>
+        <EntityType Name="SinhVienMonHoc">
+          <Key>
+            <PropertyRef Name="svmhID" />
+          </Key>
+          <Property Name="svmhID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mhmID" Type="nvarchar" MaxLength="10" />
+          <Property Name="svID" Type="nvarchar" MaxLength="10" />
+          <Property Name="diem1" Type="float" />
+          <Property Name="diem2" Type="float" />
+          <Property Name="diem3" Type="float" />
+          <Property Name="ghichu" Type="nvarchar" MaxLength="200" />
+          <Property Name="ketqua" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="fk_BuoiHoc_mhmID">
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="1" />
+          <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocMo">
+              <PropertyRef Name="mhmID" />
+            </Principal>
+            <Dependent Role="BuoiHoc">
+              <PropertyRef Name="mhmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DiemDanh_bhID">
+          <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="1" />
+          <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuoiHoc">
+              <PropertyRef Name="bhID" />
+            </Principal>
+            <Dependent Role="DiemDanh">
+              <PropertyRef Name="bhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DiemDanh_svID">
+          <End Role="SinhVienMonHoc" Type="Self.SinhVienMonHoc" Multiplicity="1" />
+          <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVienMonHoc">
+              <PropertyRef Name="svmhID" />
+            </Principal>
+            <Dependent Role="DiemDanh">
+              <PropertyRef Name="svmhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LichThi_mhmID">
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="0..1" />
+          <End Role="LichThi" Type="Self.LichThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocMo">
+              <PropertyRef Name="mhmID" />
+            </Principal>
+            <Dependent Role="LichThi">
+              <PropertyRef Name="mhmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_lophoc_ctID">
+          <End Role="ChuongTrinhHoc" Type="Self.ChuongTrinhHoc" Multiplicity="0..1" />
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuongTrinhHoc">
+              <PropertyRef Name="ctID" />
+            </Principal>
+            <Dependent Role="LopHoc">
+              <PropertyRef Name="ctID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MonHocMo_gvID">
+          <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="1" />
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiangVien">
+              <PropertyRef Name="gvID" />
+            </Principal>
+            <Dependent Role="MonHocMo">
+              <PropertyRef Name="gvID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MonHocMo_mhID">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="mhID" />
+            </Principal>
+            <Dependent Role="MonHocMo">
+              <PropertyRef Name="mhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SinhVien_lopID">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="lopID" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="lopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sinhvienmonhoc_mhmID">
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="0..1" />
+          <End Role="SinhVienMonHoc" Type="Self.SinhVienMonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocMo">
+              <PropertyRef Name="mhmID" />
+            </Principal>
+            <Dependent Role="SinhVienMonHoc">
+              <PropertyRef Name="mhmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sinhvienmonhoc_svID">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="SinhVienMonHoc" Type="Self.SinhVienMonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="svID" />
+            </Principal>
+            <Dependent Role="SinhVienMonHoc">
+              <PropertyRef Name="svID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentManagementModelStoreContainer">
+          <EntitySet Name="BuoiHoc" EntityType="Self.BuoiHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChuongTrinhHoc" EntityType="Self.ChuongTrinhHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiemDanh" EntityType="Self.DiemDanh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiangVien" EntityType="Self.GiangVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichThi" EntityType="Self.LichThi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHocMo" EntityType="Self.MonHocMo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quanly" EntityType="Self.Quanly" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinhVienMonHoc" EntityType="Self.SinhVienMonHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_BuoiHoc_mhmID" Association="Self.fk_BuoiHoc_mhmID">
+            <End Role="MonHocMo" EntitySet="MonHocMo" />
+            <End Role="BuoiHoc" EntitySet="BuoiHoc" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DiemDanh_bhID" Association="Self.fk_DiemDanh_bhID">
+            <End Role="BuoiHoc" EntitySet="BuoiHoc" />
+            <End Role="DiemDanh" EntitySet="DiemDanh" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DiemDanh_svID" Association="Self.fk_DiemDanh_svID">
+            <End Role="SinhVienMonHoc" EntitySet="SinhVienMonHoc" />
+            <End Role="DiemDanh" EntitySet="DiemDanh" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LichThi_mhmID" Association="Self.fk_LichThi_mhmID">
+            <End Role="MonHocMo" EntitySet="MonHocMo" />
+            <End Role="LichThi" EntitySet="LichThi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_lophoc_ctID" Association="Self.fk_lophoc_ctID">
+            <End Role="ChuongTrinhHoc" EntitySet="ChuongTrinhHoc" />
+            <End Role="LopHoc" EntitySet="LopHoc" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MonHocMo_gvID" Association="Self.fk_MonHocMo_gvID">
+            <End Role="GiangVien" EntitySet="GiangVien" />
+            <End Role="MonHocMo" EntitySet="MonHocMo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MonHocMo_mhID" Association="Self.fk_MonHocMo_mhID">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="MonHocMo" EntitySet="MonHocMo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SinhVien_lopID" Association="Self.fk_SinhVien_lopID">
+            <End Role="LopHoc" EntitySet="LopHoc" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sinhvienmonhoc_mhmID" Association="Self.fk_sinhvienmonhoc_mhmID">
+            <End Role="MonHocMo" EntitySet="MonHocMo" />
+            <End Role="SinhVienMonHoc" EntitySet="SinhVienMonHoc" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sinhvienmonhoc_svID" Association="Self.fk_sinhvienmonhoc_svID">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="SinhVienMonHoc" EntitySet="SinhVienMonHoc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuoiHoc">
+          <Key>
+            <PropertyRef Name="bhID" />
+          </Key>
+          <Property Name="bhID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mhmID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="buoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bhNgay" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MonHocMo" Relationship="Self.fk_BuoiHoc_mhmID" FromRole="BuoiHoc" ToRole="MonHocMo" />
+          <NavigationProperty Name="DiemDanhs" Relationship="Self.fk_DiemDanh_bhID" FromRole="BuoiHoc" ToRole="DiemDanh" />
+        </EntityType>
+        <EntityType Name="ChuongTrinhHoc">
+          <Key>
+            <PropertyRef Name="ctID" />
+          </Key>
+          <Property Name="ctID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ctTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LopHocs" Relationship="Self.fk_lophoc_ctID" FromRole="ChuongTrinhHoc" ToRole="LopHoc" />
+        </EntityType>
+        <EntityType Name="DiemDanh">
+          <Key>
+            <PropertyRef Name="bhID" />
+            <PropertyRef Name="svmhID" />
+          </Key>
+          <Property Name="bhID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="svmhID" Type="Int32" Nullable="false" />
+          <Property Name="vang" Type="Int32" />
+          <Property Name="lydo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BuoiHoc" Relationship="Self.fk_DiemDanh_bhID" FromRole="DiemDanh" ToRole="BuoiHoc" />
+          <NavigationProperty Name="SinhVienMonHoc" Relationship="Self.fk_DiemDanh_svID" FromRole="DiemDanh" ToRole="SinhVienMonHoc" />
+        </EntityType>
+        <EntityType Name="GiangVien">
+          <Key>
+            <PropertyRef Name="gvID" />
+          </Key>
+          <Property Name="gvID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gvTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gvGioiTinh" Type="Boolean" Nullable="false" />
+          <Property Name="gvNgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="gvDiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="gvDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="gvMatKhau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gvThoiViec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MonHocMoes" Relationship="Self.fk_MonHocMo_gvID" FromRole="GiangVien" ToRole="MonHocMo" />
+        </EntityType>
+        <EntityType Name="LichThi">
+          <Key>
+            <PropertyRef Name="ltID" />
+          </Key>
+          <Property Name="ltID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mhmID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ngaythi" Type="DateTime" Precision="0" />
+          <Property Name="lanthi" Type="Int32" />
+          <NavigationProperty Name="MonHocMo" Relationship="Self.fk_LichThi_mhmID" FromRole="LichThi" ToRole="MonHocMo" />
+        </EntityType>
+        <EntityType Name="LopHoc">
+          <Key>
+            <PropertyRef Name="lopID" />
+          </Key>
+          <Property Name="lopID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ctID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChuongTrinhHoc" Relationship="Self.fk_lophoc_ctID" FromRole="LopHoc" ToRole="ChuongTrinhHoc" />
+          <NavigationProperty Name="SinhViens" Relationship="Self.fk_SinhVien_lopID" FromRole="LopHoc" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="mhID" />
+          </Key>
+          <Property Name="mhID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mhTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MonHocMoes" Relationship="Self.fk_MonHocMo_mhID" FromRole="MonHoc" ToRole="MonHocMo" />
+        </EntityType>
+        <EntityType Name="MonHocMo">
+          <Key>
+            <PropertyRef Name="mhmID" />
+          </Key>
+          <Property Name="mhmID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mhID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sobuoi" Type="Int32" Nullable="false" />
+          <Property Name="ngayBatDau" Type="DateTime" Precision="0" />
+          <Property Name="giohoc" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="gvID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BuoiHocs" Relationship="Self.fk_BuoiHoc_mhmID" FromRole="MonHocMo" ToRole="BuoiHoc" />
+          <NavigationProperty Name="GiangVien" Relationship="Self.fk_MonHocMo_gvID" FromRole="MonHocMo" ToRole="GiangVien" />
+          <NavigationProperty Name="LichThis" Relationship="Self.fk_LichThi_mhmID" FromRole="MonHocMo" ToRole="LichThi" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.fk_MonHocMo_mhID" FromRole="MonHocMo" ToRole="MonHoc" />
+          <NavigationProperty Name="SinhVienMonHocs" Relationship="Self.fk_sinhvienmonhoc_mhmID" FromRole="MonHocMo" ToRole="SinhVienMonHoc" />
+        </EntityType>
+        <EntityType Name="Quanly">
+          <Key>
+            <PropertyRef Name="qlyID" />
+          </Key>
+          <Property Name="qlyID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qlyMatKhau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qlyRole" Type="Boolean" />
+          <Property Name="qlyGioiTinh" Type="Boolean" />
+          <Property Name="qlyTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qlyDiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="qlyDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="qlyNgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="qlyThoiViec" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="svID" />
+          </Key>
+          <Property Name="svID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="svMatKhau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="svTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="svGioiTinh" Type="Boolean" Nullable="false" />
+          <Property Name="svBirhday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="svDiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="svDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="lopID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="svNghiHoc" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LopHoc" Relationship="Self.fk_SinhVien_lopID" FromRole="SinhVien" ToRole="LopHoc" />
+          <NavigationProperty Name="SinhVienMonHocs" Relationship="Self.fk_sinhvienmonhoc_svID" FromRole="SinhVien" ToRole="SinhVienMonHoc" />
+        </EntityType>
+        <EntityType Name="SinhVienMonHoc">
+          <Key>
+            <PropertyRef Name="svmhID" />
+          </Key>
+          <Property Name="svmhID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mhmID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="svID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="diem1" Type="Double" />
+          <Property Name="diem2" Type="Double" />
+          <Property Name="diem3" Type="Double" />
+          <Property Name="ghichu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ketqua" Type="Boolean" />
+          <NavigationProperty Name="DiemDanhs" Relationship="Self.fk_DiemDanh_svID" FromRole="SinhVienMonHoc" ToRole="DiemDanh" />
+          <NavigationProperty Name="MonHocMo" Relationship="Self.fk_sinhvienmonhoc_mhmID" FromRole="SinhVienMonHoc" ToRole="MonHocMo" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.fk_sinhvienmonhoc_svID" FromRole="SinhVienMonHoc" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="fk_BuoiHoc_mhmID">
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="1" />
+          <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocMo">
+              <PropertyRef Name="mhmID" />
+            </Principal>
+            <Dependent Role="BuoiHoc">
+              <PropertyRef Name="mhmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DiemDanh_bhID">
+          <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="1" />
+          <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuoiHoc">
+              <PropertyRef Name="bhID" />
+            </Principal>
+            <Dependent Role="DiemDanh">
+              <PropertyRef Name="bhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_lophoc_ctID">
+          <End Role="ChuongTrinhHoc" Type="Self.ChuongTrinhHoc" Multiplicity="0..1" />
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuongTrinhHoc">
+              <PropertyRef Name="ctID" />
+            </Principal>
+            <Dependent Role="LopHoc">
+              <PropertyRef Name="ctID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DiemDanh_svID">
+          <End Role="SinhVienMonHoc" Type="Self.SinhVienMonHoc" Multiplicity="1" />
+          <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVienMonHoc">
+              <PropertyRef Name="svmhID" />
+            </Principal>
+            <Dependent Role="DiemDanh">
+              <PropertyRef Name="svmhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MonHocMo_gvID">
+          <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="1" />
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiangVien">
+              <PropertyRef Name="gvID" />
+            </Principal>
+            <Dependent Role="MonHocMo">
+              <PropertyRef Name="gvID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LichThi_mhmID">
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="0..1" />
+          <End Role="LichThi" Type="Self.LichThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocMo">
+              <PropertyRef Name="mhmID" />
+            </Principal>
+            <Dependent Role="LichThi">
+              <PropertyRef Name="mhmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SinhVien_lopID">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="lopID" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="lopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MonHocMo_mhID">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="mhID" />
+            </Principal>
+            <Dependent Role="MonHocMo">
+              <PropertyRef Name="mhID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sinhvienmonhoc_mhmID">
+          <End Role="MonHocMo" Type="Self.MonHocMo" Multiplicity="0..1" />
+          <End Role="SinhVienMonHoc" Type="Self.SinhVienMonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocMo">
+              <PropertyRef Name="mhmID" />
+            </Principal>
+            <Dependent Role="SinhVienMonHoc">
+              <PropertyRef Name="mhmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sinhvienmonhoc_svID">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="SinhVienMonHoc" Type="Self.SinhVienMonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="svID" />
+            </Principal>
+            <Dependent Role="SinhVienMonHoc">
+              <PropertyRef Name="svID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuoiHocs" EntityType="Self.BuoiHoc" />
+          <EntitySet Name="ChuongTrinhHocs" EntityType="Self.ChuongTrinhHoc" />
+          <EntitySet Name="DiemDanhs" EntityType="Self.DiemDanh" />
+          <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
+          <EntitySet Name="LichThis" EntityType="Self.LichThi" />
+          <EntitySet Name="LopHocs" EntityType="Self.LopHoc" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+          <EntitySet Name="MonHocMoes" EntityType="Self.MonHocMo" />
+          <EntitySet Name="Quanlies" EntityType="Self.Quanly" />
+          <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+          <EntitySet Name="SinhVienMonHocs" EntityType="Self.SinhVienMonHoc" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="fk_BuoiHoc_mhmID" Association="Self.fk_BuoiHoc_mhmID">
+            <End Role="MonHocMo" EntitySet="MonHocMoes" />
+            <End Role="BuoiHoc" EntitySet="BuoiHocs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DiemDanh_bhID" Association="Self.fk_DiemDanh_bhID">
+            <End Role="BuoiHoc" EntitySet="BuoiHocs" />
+            <End Role="DiemDanh" EntitySet="DiemDanhs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_lophoc_ctID" Association="Self.fk_lophoc_ctID">
+            <End Role="ChuongTrinhHoc" EntitySet="ChuongTrinhHocs" />
+            <End Role="LopHoc" EntitySet="LopHocs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DiemDanh_svID" Association="Self.fk_DiemDanh_svID">
+            <End Role="SinhVienMonHoc" EntitySet="SinhVienMonHocs" />
+            <End Role="DiemDanh" EntitySet="DiemDanhs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MonHocMo_gvID" Association="Self.fk_MonHocMo_gvID">
+            <End Role="GiangVien" EntitySet="GiangViens" />
+            <End Role="MonHocMo" EntitySet="MonHocMoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LichThi_mhmID" Association="Self.fk_LichThi_mhmID">
+            <End Role="MonHocMo" EntitySet="MonHocMoes" />
+            <End Role="LichThi" EntitySet="LichThis" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SinhVien_lopID" Association="Self.fk_SinhVien_lopID">
+            <End Role="LopHoc" EntitySet="LopHocs" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MonHocMo_mhID" Association="Self.fk_MonHocMo_mhID">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="MonHocMo" EntitySet="MonHocMoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sinhvienmonhoc_mhmID" Association="Self.fk_sinhvienmonhoc_mhmID">
+            <End Role="MonHocMo" EntitySet="MonHocMoes" />
+            <End Role="SinhVienMonHoc" EntitySet="SinhVienMonHocs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sinhvienmonhoc_svID" Association="Self.fk_sinhvienmonhoc_svID">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="SinhVienMonHoc" EntitySet="SinhVienMonHocs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentManagementModelStoreContainer" CdmEntityContainer="StudentManagementEntities">
+          <EntitySetMapping Name="BuoiHocs">
+            <EntityTypeMapping TypeName="StudentManagementModel.BuoiHoc">
+              <MappingFragment StoreEntitySet="BuoiHoc">
+                <ScalarProperty Name="bhID" ColumnName="bhID" />
+                <ScalarProperty Name="mhmID" ColumnName="mhmID" />
+                <ScalarProperty Name="buoi" ColumnName="buoi" />
+                <ScalarProperty Name="bhNgay" ColumnName="bhNgay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChuongTrinhHocs">
+            <EntityTypeMapping TypeName="StudentManagementModel.ChuongTrinhHoc">
+              <MappingFragment StoreEntitySet="ChuongTrinhHoc">
+                <ScalarProperty Name="ctID" ColumnName="ctID" />
+                <ScalarProperty Name="ctTen" ColumnName="ctTen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiemDanhs">
+            <EntityTypeMapping TypeName="StudentManagementModel.DiemDanh">
+              <MappingFragment StoreEntitySet="DiemDanh">
+                <ScalarProperty Name="bhID" ColumnName="bhID" />
+                <ScalarProperty Name="svmhID" ColumnName="svmhID" />
+                <ScalarProperty Name="vang" ColumnName="vang" />
+                <ScalarProperty Name="lydo" ColumnName="lydo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiangViens">
+            <EntityTypeMapping TypeName="StudentManagementModel.GiangVien">
+              <MappingFragment StoreEntitySet="GiangVien">
+                <ScalarProperty Name="gvID" ColumnName="gvID" />
+                <ScalarProperty Name="gvTen" ColumnName="gvTen" />
+                <ScalarProperty Name="gvGioiTinh" ColumnName="gvGioiTinh" />
+                <ScalarProperty Name="gvNgaySinh" ColumnName="gvNgaySinh" />
+                <ScalarProperty Name="gvDiaChi" ColumnName="gvDiaChi" />
+                <ScalarProperty Name="gvDienThoai" ColumnName="gvDienThoai" />
+                <ScalarProperty Name="gvMatKhau" ColumnName="gvMatKhau" />
+                <ScalarProperty Name="gvThoiViec" ColumnName="gvThoiViec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichThis">
+            <EntityTypeMapping TypeName="StudentManagementModel.LichThi">
+              <MappingFragment StoreEntitySet="LichThi">
+                <ScalarProperty Name="ltID" ColumnName="ltID" />
+                <ScalarProperty Name="mhmID" ColumnName="mhmID" />
+                <ScalarProperty Name="ngaythi" ColumnName="ngaythi" />
+                <ScalarProperty Name="lanthi" ColumnName="lanthi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LopHocs">
+            <EntityTypeMapping TypeName="StudentManagementModel.LopHoc">
+              <MappingFragment StoreEntitySet="LopHoc">
+                <ScalarProperty Name="lopID" ColumnName="lopID" />
+                <ScalarProperty Name="ctID" ColumnName="ctID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="StudentManagementModel.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="mhID" ColumnName="mhID" />
+                <ScalarProperty Name="mhTen" ColumnName="mhTen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocMoes">
+            <EntityTypeMapping TypeName="StudentManagementModel.MonHocMo">
+              <MappingFragment StoreEntitySet="MonHocMo">
+                <ScalarProperty Name="mhmID" ColumnName="mhmID" />
+                <ScalarProperty Name="mhID" ColumnName="mhID" />
+                <ScalarProperty Name="sobuoi" ColumnName="sobuoi" />
+                <ScalarProperty Name="ngayBatDau" ColumnName="ngayBatDau" />
+                <ScalarProperty Name="giohoc" ColumnName="giohoc" />
+                <ScalarProperty Name="gvID" ColumnName="gvID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quanlies">
+            <EntityTypeMapping TypeName="StudentManagementModel.Quanly">
+              <MappingFragment StoreEntitySet="Quanly">
+                <ScalarProperty Name="qlyID" ColumnName="qlyID" />
+                <ScalarProperty Name="qlyMatKhau" ColumnName="qlyMatKhau" />
+                <ScalarProperty Name="qlyRole" ColumnName="qlyRole" />
+                <ScalarProperty Name="qlyGioiTinh" ColumnName="qlyGioiTinh" />
+                <ScalarProperty Name="qlyTen" ColumnName="qlyTen" />
+                <ScalarProperty Name="qlyDiaChi" ColumnName="qlyDiaChi" />
+                <ScalarProperty Name="qlyDienThoai" ColumnName="qlyDienThoai" />
+                <ScalarProperty Name="qlyNgaySinh" ColumnName="qlyNgaySinh" />
+                <ScalarProperty Name="qlyThoiViec" ColumnName="qlyThoiViec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinhViens">
+            <EntityTypeMapping TypeName="StudentManagementModel.SinhVien">
+              <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="svID" ColumnName="svID" />
+                <ScalarProperty Name="svMatKhau" ColumnName="svMatKhau" />
+                <ScalarProperty Name="svTen" ColumnName="svTen" />
+                <ScalarProperty Name="svGioiTinh" ColumnName="svGioiTinh" />
+                <ScalarProperty Name="svBirhday" ColumnName="svBirhday" />
+                <ScalarProperty Name="svDiaChi" ColumnName="svDiaChi" />
+                <ScalarProperty Name="svDienThoai" ColumnName="svDienThoai" />
+                <ScalarProperty Name="lopID" ColumnName="lopID" />
+                <ScalarProperty Name="svNghiHoc" ColumnName="svNghiHoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinhVienMonHocs">
+            <EntityTypeMapping TypeName="StudentManagementModel.SinhVienMonHoc">
+              <MappingFragment StoreEntitySet="SinhVienMonHoc">
+                <ScalarProperty Name="svmhID" ColumnName="svmhID" />
+                <ScalarProperty Name="mhmID" ColumnName="mhmID" />
+                <ScalarProperty Name="svID" ColumnName="svID" />
+                <ScalarProperty Name="diem1" ColumnName="diem1" />
+                <ScalarProperty Name="diem2" ColumnName="diem2" />
+                <ScalarProperty Name="diem3" ColumnName="diem3" />
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="ketqua" ColumnName="ketqua" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="StudentManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

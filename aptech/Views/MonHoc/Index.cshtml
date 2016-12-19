@@ -1,0 +1,41 @@
+﻿@model IEnumerable<aptech.Models.MonHoc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <input type="button" value="Export Excel File" onclick="@("window.location.href='" + @Url.Action("exportExcel", "MonHoc") + "'");" />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.mhID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mhTen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.mhID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mhTen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.mhID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.mhID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.mhID })
+        </td>
+    </tr>
+}
+
+</table>

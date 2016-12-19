@@ -12,7 +12,13 @@ namespace aptech
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            
+            routes.MapRoute(
+                name: "custom",
+                url: "{controller}/{action}/{id}/{passdata}",
+                defaults: new { controller = "Home", action = "index", id = 0, passdata = UrlParameter.Optional }
+            );
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
