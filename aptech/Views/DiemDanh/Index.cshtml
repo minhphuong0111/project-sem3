@@ -7,8 +7,7 @@
     @Html.Label("Mã Môn Học Mở: ", new { @class = "text"})
     <select name="carlist" class="dropdown" id="mhmID" >
         @foreach (string mhmID in ViewBag.lstmhm)
-        {            <option value=@mhmID>@mhmID</option>
-                    <option value="fdajklfas">fjskld</option>
+        {            <option value=@mhmID>@mhmID</option> 
         }
     </select>
     @Html.Label("Chọn ngày: ", new { @class = "text" })
@@ -23,7 +22,10 @@
                     <th>Mã Sinh Viên</th>
                     <th> Họ tên</th>
                     <th> Lớp</th>
-                    <th> Vắng</th>
+                    <th> CM</th>
+                    <th> KP</th>
+                    <th> CP</th>
+                    <th> Lý Do</th>
                 </tr>
             </thead>
             <tbody class="tbody"></tbody>
