@@ -18,6 +18,7 @@ namespace aptech.Models
         public int svmhID { get; set; }
         public Nullable<int> vang { get; set; }
         public string lydo { get; set; }
+        public Nullable<bool> thuchanh { get; set; }
     
         public virtual BuoiHoc BuoiHoc { get; set; }
         public virtual SinhVienMonHoc SinhVienMonHoc { get; set; }

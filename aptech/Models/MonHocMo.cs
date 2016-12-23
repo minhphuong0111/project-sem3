@@ -23,10 +23,12 @@ namespace aptech.Models
     
         public string mhmID { get; set; }
         public string mhID { get; set; }
-        public int sobuoi { get; set; }
+        public Nullable<int> sobuoilt { get; set; }
+        public Nullable<int> sobuoith { get; set; }
         public Nullable<System.DateTime> ngayBatDau { get; set; }
         public string giohoc { get; set; }
         public string gvID { get; set; }
+        public bool ketthuc { get; set; }
     
         public virtual ICollection<BuoiHoc> BuoiHocs { get; set; }
         public virtual GiangVien GiangVien { get; set; }

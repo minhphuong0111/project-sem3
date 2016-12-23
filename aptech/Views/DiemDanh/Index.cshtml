@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @Html.Label("Mã Môn Học Mở: ", new { @class = "text"})
+    <select name="carlist" class="dropdown" id="mhmID" >
+        @foreach (string mhmID in ViewBag.lstmhm)
+        {            <option value=@mhmID>@mhmID</option>
+                    <option value="fdajklfas">fjskld</option>
+        }
+    </select>
+    @Html.Label("Chọn ngày: ", new { @class = "text" })
+    <input type="date" class="chonngay" />
+    <button type="submit" class="btn btn-primary" onclick="return _getSV();">Lọc Danh Sách</button>
+    
+    <!--hien thi danh sach-->
+    <div class="container-fluid danhsach" id="ds" >
+        <table class="tblDanhSach table table-striped">
+            <thead>
+                <tr>
+                    <th>Mã Sinh Viên</th>
+                    <th> Họ tên</th>
+                    <th> Lớp</th>
+                    <th> Vắng</th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" style="float:right; margin-right:200px;" >Gửi</button> 
+
+
+

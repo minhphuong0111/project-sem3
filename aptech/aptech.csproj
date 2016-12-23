@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DiemDanhController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MonHocController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\LichThi.cs">
       <DependentUpon>StudentManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\lmp\functionDiemDanh.cs" />
     <Compile Include="Models\lmp\functionLogin.cs" />
     <Compile Include="Models\lmp\GenerateID.cs" />
     <Compile Include="Models\lmp\monhocModel.cs" />
@@ -273,6 +275,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\projectsem3.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\DiemDanh.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -331,6 +334,8 @@
     <Content Include="Views\Admin\MoMonHoc.cshtml" />
     <Content Include="Views\Admin\dangkyhoclai.cshtml" />
     <Content Include="Views\MonHoc\Index.cshtml" />
+    <Content Include="Views\MonHoc\ThemMon.cshtml" />
+    <Content Include="Views\DiemDanh\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

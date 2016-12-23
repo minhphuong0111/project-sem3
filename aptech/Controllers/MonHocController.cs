@@ -26,7 +26,11 @@ namespace aptech.Controllers
     
         public ActionResult ThemMon()
         {
-            return View();
+            GenerateID generID = new GenerateID();
+            generID.generateID("monhoc");
+            MonHoc mh = new MonHoc();
+            mh.mhID = generID.ID;
+            return View(mh);
         }
 
         [HttpPost]
