@@ -19,10 +19,11 @@ namespace aptech.Models
             this.DiemDanhs = new HashSet<DiemDanh>();
         }
     
-        public string bhID { get; set; }
+        public int bhID { get; set; }
         public string mhmID { get; set; }
         public int buoi { get; set; }
         public Nullable<System.DateTime> bhNgay { get; set; }
+        public Nullable<bool> thuchanh { get; set; }
     
         public virtual MonHocMo MonHocMo { get; set; }
         public virtual ICollection<DiemDanh> DiemDanhs { get; set; }

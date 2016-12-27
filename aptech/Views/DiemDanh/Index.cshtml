@@ -11,12 +11,12 @@
         }
     </select>
     @Html.Label("Chọn ngày: ", new { @class = "text" })
-    <input type="date" class="chonngay" />
+    <input type="date" id="ngaythang" class="chonngay" />
     <button type="submit" class="btn btn-primary" onclick="return _getSV();">Lọc Danh Sách</button>
     
     <!--hien thi danh sach-->
     <div class="container-fluid danhsach" id="ds" >
-        <table class="tblDanhSach table table-striped">
+        <table class="tblDanhSach table table-striped" id="tb">
             <thead>
                 <tr>
                     <th>Mã Sinh Viên</th>
@@ -32,7 +32,7 @@
         </table>
     </div>
     
-    <button type="submit" class="btn btn-primary" style="float:right; margin-right:200px;" >Gửi</button> 
+    <button type="submit" class="btn btn-primary" onclick="_tbdata()" style="float:right; margin-right:200px;" >Gửi</button> 
 
 
 

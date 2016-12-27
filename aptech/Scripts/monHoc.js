@@ -1,24 +1,11 @@
-﻿/* FileName: student.js
-Project Name: AjaxDemo
-Date Created: 5/10/2015 8:49:08 AM
-Description: Auto-generated
-Version: 1.0.0.0
-Author:	Lê Thanh Tuấn - Khoa CNTT
-Author Email: tuanitpro@gmail.com
-Author Mobile: 0976060432
-Author URI: http://tuanitpro.com
-License: 
-
-*/
-
-
+﻿
 $(document).ready(function () {
     _getAll();
 });
 
 function _getAll() {
     $.ajax({
-        url: "/MonHoc/List",
+        url: "/MonHoc/layMonHoc",
         type: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -44,7 +31,7 @@ function _getAll() {
 }
 function _getById(id) {
     $.ajax({
-        url: '/Home/Get/' + id,
+        url: '/MonHoc/layMonHocID/' + id,
         // data: JSON.stringify(dto),
         type: "GET",
         contentType: "application/json; charset=utf-8",
@@ -71,7 +58,7 @@ function _add() {
         Status: $('#Status').val(),
     }
     $.ajax({
-        url: '/Home/Create',
+        url: '/MonHoc/themMH',
         data: JSON.stringify(obj),
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -92,7 +79,7 @@ function _edit() {
         Status: $('#Status').val(),
     }
     $.ajax({
-        url: '/Home/Update',
+        url: '/MonHoc/suaMH',
         data: JSON.stringify(obj),
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -111,7 +98,7 @@ function _delete(id) {
     var cf = confirm('Are you sure want to permanently delete this row?');
     if (cf) {
         $.ajax({
-            url: '/Home/Delete/' + id,
+            url: '/MonHoc/xoaMH/' + id,
             type: "POST",
             contentType: "application/json; charset=utf-8",
             dataType: "json",

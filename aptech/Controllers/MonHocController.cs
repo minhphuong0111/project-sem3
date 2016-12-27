@@ -9,11 +9,13 @@ using System.Web.Mvc;
 using Microsoft.Office.Interop;
 using System.IO;
 using System.Data;
+using System.Data.Entity;
 
 namespace aptech.Controllers
 {
     public class MonHocController : Controller
     {
+        /*
         // GET: MonHoc
         monhocModel mhModel = new monhocModel();
         public ActionResult Index()
@@ -138,10 +140,10 @@ namespace aptech.Controllers
                 xlWorkSheet.Cells[i, 2] = p.mhTen;
                 i++;
                  * */
-                Response.Write(p.mhID + "\t");
-                Response.Write(p.mhTen + "\n");
-            }
-            Response.End();  
+   //             Response.Write(p.mhID + "\t");
+   //             Response.Write(p.mhTen + "\n");
+   //         }
+   //         Response.End();  
             /*
             using(MemoryStream MyMemoryStream = new MemoryStream())
                         {
@@ -152,9 +154,60 @@ namespace aptech.Controllers
                         }
             */
             
+   //     }
+        StudentManagementEntities _context = new StudentManagementEntities();
+        public ActionResult Index()
+        {
+            return View();
         }
 
-     
+        public ActionResult layMonHoc()
+        {
+            var monhoc = _context.MonHocs.ToList();
+            return Json(monhoc, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult layMonHocID(string id)
+        {
+            var monhoc = _context.MonHocs.ToList().Find(mh => mh.mhID == id);
+            return Json(monhoc, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult themMH(MonHoc mh)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.MonHocs.Add(mh);
+                _context.SaveChanges();
+            }
+            return Json(mh, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult suaMH(MonHoc mh)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Entry(mh).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+
+            return Json(mh, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult xoaMH(string id)
+        {
+            var mh = _context.MonHocs.ToList().Find(m => m.mhID == id);
+            if(mh != null)
+            {
+                _context.MonHocs.Remove(mh);
+                _context.SaveChanges();
+            }
+            return Json(mh, JsonRequestBehavior.AllowGet);
+        }
+
     }
      
 }
