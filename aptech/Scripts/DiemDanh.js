@@ -79,32 +79,48 @@ function jsonObj(class_t, type_t) {
 
 function _tbdata() {
     
-    var dataarr = [];
-    
-    for(var i = 0; i<svarr.length; i++)
+    var trangthaiarr = [];
+    var lydoarr = [];
+    for (var i = 0; i < svarr.length; i++)
     {
-        var trangthai = $("input[name='" + svarr[i] + "']:checked").val();
-        var lydo = $("#" + svarr[i]).val();
-       /* dataarr[i] = new Array(2);
-        dataarr[i][0] = trangthai;
-        dataarr[i][1] = lydo;*/
-        dataarr[i] = ["" + trangthai, "" + lydo];
-        
+        var trangthai1 = $("input[name='" + svarr[i] + "']:checked").val();
+        var lydo1 = $("#" + svarr[i]).val();
+        /*var data = {
+            trangthai : trangthai1,
+            lydo : lydo1
+        }
+        dataarr[i] = data;
+        */
+        lydoarr[i] = lydo1;
+        trangthaiarr[i] = trangthai1;
     }
-    myDataObject = new Object;
-    myDataObject.jsonObj = dataarr;
+    var ngay = $("#ngaythang").val();
+    var frmData = new FormData();
+    frmData.append("trangthai", trangthaiarr);
+    frmData.append("lydo", lydoarr);
+    frmData.append("ngaythang", ngay);
+
+    //var model = JSON.stringify({ 'ds': dataarr });
+ //   var postData = { values: dataarr };
+    
+    //var model = JSON.stringify(dataarr);
     $.ajax({
-        type: "POST",
-        url: "DiemDanh/guiDiemDanh",
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        traditional: true,
-        data: { id: JSON.stringify(myDataObject) },
-        success: function (result) {
+        url: "/DiemDanh/sendDD",
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        
+        data: frmData,
+        success: function (rs) {
+            alert(rs);
+            window.location.assign(rs);
         },
-        error: function (data, textStatus) { alert(textStatus); }
+        error: function (err) {
+        alert("Error: " + err.responseText);
+    }
     });
    
+    
 }
 
 

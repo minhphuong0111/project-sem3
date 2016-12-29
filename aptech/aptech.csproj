@@ -40,6 +40,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -162,10 +168,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DangKyHocLaiController.cs" />
     <Compile Include="Controllers\DiemDanhController.cs" />
+    <Compile Include="Controllers\GiangVienController.cs" />
+    <Compile Include="Controllers\GiaoVuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MonHocController.cs" />
+    <Compile Include="Controllers\MonHocMoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +186,7 @@
     <Compile Include="Models\ChuongTrinhHoc.cs">
       <DependentUpon>StudentManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DangKyHoLaiViewModel.cs" />
     <Compile Include="Models\DiemDanh.cs">
       <DependentUpon>StudentManagementModel.tt</DependentUpon>
     </Compile>
@@ -189,6 +200,7 @@
     <Compile Include="Models\lmp\functionDiemDanh.cs" />
     <Compile Include="Models\lmp\functionLogin.cs" />
     <Compile Include="Models\lmp\GenerateID.cs" />
+    <Compile Include="Models\lmp\getDiemDanh.cs" />
     <Compile Include="Models\lmp\monhocModel.cs" />
     <Compile Include="Models\LopHoc.cs">
       <DependentUpon>StudentManagementModel.tt</DependentUpon>
@@ -238,6 +250,7 @@
     <Content Include="Content\docs.min.js" />
     <Content Include="Content\ie10-viewport-bug-workaround.js" />
     <Content Include="Content\IndexStyle.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -336,6 +349,17 @@
     <Content Include="Views\MonHoc\Index.cshtml" />
     <Content Include="Views\MonHoc\ThemMon.cshtml" />
     <Content Include="Views\DiemDanh\Index.cshtml" />
+    <Content Include="Views\DiemDanh\testMethod.cshtml" />
+    <Content Include="Views\DangKyHocLai\Index.cshtml" />
+    <Content Include="Views\GiangVien\Create.cshtml" />
+    <Content Include="Views\GiangVien\Edit.cshtml" />
+    <Content Include="Views\GiangVien\Index.cshtml" />
+    <Content Include="Views\GiaoVu\Create.cshtml" />
+    <Content Include="Views\GiaoVu\Edit.cshtml" />
+    <Content Include="Views\GiaoVu\Index.cshtml" />
+    <Content Include="Views\MonHocMo\Create.cshtml" />
+    <Content Include="Views\MonHocMo\Edit.cshtml" />
+    <Content Include="Views\MonHocMo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

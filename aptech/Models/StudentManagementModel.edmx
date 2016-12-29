@@ -67,6 +67,8 @@
           </Key>
           <Property Name="mhID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="mhTen" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="mhlt" Type="int" />
+          <Property Name="mhth" Type="int" />
         </EntityType>
         <EntityType Name="MonHocMo">
           <Key>
@@ -435,6 +437,8 @@
           </Key>
           <Property Name="mhID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="mhTen" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mhlt" Type="Int32" />
+          <Property Name="mhth" Type="Int32" />
           <NavigationProperty Name="MonHocMoes" Relationship="StudentManagementModel.fk_MonHocMo_mhID" FromRole="MonHoc" ToRole="MonHocMo" />
         </EntityType>
         <EntityType Name="MonHocMo">
@@ -701,6 +705,8 @@
           <EntitySetMapping Name="MonHocs">
             <EntityTypeMapping TypeName="StudentManagementModel.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="mhth" ColumnName="mhth" />
+                <ScalarProperty Name="mhlt" ColumnName="mhlt" />
                 <ScalarProperty Name="mhTen" ColumnName="mhTen" />
                 <ScalarProperty Name="mhID" ColumnName="mhID" />
               </MappingFragment>

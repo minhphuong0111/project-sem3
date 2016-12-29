@@ -8,21 +8,57 @@
 <h2>Index</h2>
 
 <p>
-    <button type="button" onclick="return _add();" id="btnAdd">Them Moi</button>
+    <button type="button"  data-toggle="modal" data-target="#bookModal" id="btnAdd">Them Moi</button>
     <input type="button" value="Export Excel File" onclick="@("window.location.href='" + @Url.Action("exportExcel", "MonHoc") + "'");" />
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.mhID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mhTen)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody class="tbody"></tbody>
+<div class="container-fluid danhsach" id="ds">
 
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.mhID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mhTen)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+
+    </table>
+</div>
+<button type="button" onclick="return _getAll()">Get</button>
+<div class="modal fade" id="bookModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><label id="title"></label></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="hidden" class="form-control" id="Id" />
+                            <label>Ma</label>
+                            <input type="text" id="mhid" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label>Ten</label>
+                            <input type="text" id="mhten" class="form-control" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer" id="modal-function">
+                <button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" onclick="_btnSave()" id="btnSave" class="btn btn-primary">ADD</button>
+                <button type="button" onclick="_btnEdit()" id="btnEdit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

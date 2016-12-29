@@ -21,6 +21,8 @@ namespace aptech.Models
     
         public string mhID { get; set; }
         public string mhTen { get; set; }
+        public Nullable<int> mhlt { get; set; }
+        public Nullable<int> mhth { get; set; }
     
         public virtual ICollection<MonHocMo> MonHocMoes { get; set; }
     }

@@ -1,0 +1,70 @@
+﻿<h2>Đăng Ký Học Lại</h2>
+@if (ViewBag.MHM.Count > 0)
+{
+<div class="row col-lg-6">
+    @using (Html.BeginForm("DangKy", "DangKyHocLai", FormMethod.Post))
+    {
+        @Html.Label("Chọn Môn Học Mở", new { @class = "txt" })
+        <select id="selectmh" name="idmhm" class="dropdown form-control" onchange="change(this.value)">
+            @foreach (var mhm in ViewBag.MHM as List<aptech.Models.MonHocMo>)
+            {
+                <option value="@mhm.mhmID">@mhm.MonHoc.mhTen (@mhm.ngayBatDau.Value.Day/@mhm.ngayBatDau.Value.Month/@mhm.ngayBatDau.Value.Year)</option>
+            }
+        </select>
+        <br />
+        <br />
+        @Html.Label("Thông Tin Môn Học Mở", new { @class = "txt" })
+        <table class="table table-bordered">
+            <tr>
+                <td>@Html.Label("Giáo Viên", new { @class = "txt" })</td>
+                <td>@Html.Label("Giáo Viên 1", new { @class = "txt", @id = "txtgv" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Thời gian bắt đầu", new { @class = "txt" })</td>
+                <td>@Html.Label("1/1/2017", new { @class = "txt", @id = "ixtNgay" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Giờ học", new { @class = "txt" })</td>
+                <td>@Html.Label("A", new { @class = "txt", @id = "txtGh" })</td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">Đăng Ký</button>
+    }
+
+    <div class="row col-lg-12">
+        <h2>@ViewBag.TB</h2>
+    </div>
+</div>
+}
+else
+{
+    <div class="row col-lg-12 text-center">
+        <div class="alert alert-info"><h1>Chua co mon hoc mo</h1></div>
+    </div>
+}
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#selectmh').val().length > 0) {
+                change($('#selectmh').val());
+            }
+            
+        });
+
+        function change(id) {
+            if ($('#selectmh').val().length > 0) {
+                $.ajax({
+                    url: '@Url.Action("GetMonHoc", "DangKyHocLai")/' + id, type: 'GET', dataType: 'json',
+                    success: function (rs) {
+                        $('#txtgv').text(rs.GV);
+                        $('#ixtNgay').text(rs.TGH);
+                        $('#txtGh').text(rs.GH);
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                })
+            }
+        }
+    </script>
+}

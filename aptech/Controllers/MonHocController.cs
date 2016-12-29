@@ -163,13 +163,24 @@ namespace aptech.Controllers
 
         public ActionResult layMonHoc()
         {
-            var monhoc = _context.MonHocs.ToList();
+            var monhoc = from MonHocs in _context.MonHocs
+                         select new
+                         {
+                             mhID = MonHocs.mhID,
+                             mhTen = MonHocs.mhTen
+                         };
             return Json(monhoc, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult layMonHocID(string id)
         {
-            var monhoc = _context.MonHocs.ToList().Find(mh => mh.mhID == id);
+            var monhoc = from MonHocs in _context.MonHocs
+                         where MonHocs.mhID == id
+                         select new
+                         {
+                             mhID = MonHocs.mhID,
+                             mhTen = MonHocs.mhTen
+                         };
             return Json(monhoc, JsonRequestBehavior.AllowGet);
         }
 

@@ -54,12 +54,12 @@ namespace aptech.Controllers
             return Json(query, JsonRequestBehavior.AllowGet);
         }
 
-        private bool themBuoiHoc()
+        private bool themBuoiHoc(DateTime ngay)
         {
             
             BuoiHoc bh = new BuoiHoc();
             bh.mhmID = Session["mhm"].ToString();
-            bh.bhNgay = ViewBag.ngaythang;
+            bh.bhNgay = ngay;
             _context.BuoiHocs.Add(bh);
             int kt = _context.SaveChanges();
             if(kt==0)
@@ -77,17 +77,30 @@ namespace aptech.Controllers
             }         
         }
         [HttpPost]
-        public ActionResult guiDiemDanh(dynamic id)
+        public ActionResult sendDD()
         {
-            themBuoiHoc();
-            List<List<string>> diemdanhData = new List<List<string>>();
+            var trangthai = Request.Form["trangthai"].ToString().Split(',');
+            var lydo = Request.Form["lydo"].ToString().Split(',');
+            List<string> lstTrangThai = new List<string>();
+            List<string> lstLyDo = new List<string>();
+            foreach(string tt in trangthai)
+            {
+                lstTrangThai.Add(tt);
+            }
+            foreach (string ld in lydo)
+            {
+                lstLyDo.Add(ld);
+            }
             
-            int loop = dssv.Count();
+           // List<List<string>> diemdanhData = new List<List<string>>();
+
+            int loop = lstTrangThai.Count();
+            themBuoiHoc(Convert.ToDateTime(Request.Form["ngaythang"].ToString()));
             
 
             for (int i = 0; i < loop; i++ )
             {
-                if(id[i][0] == "cp")
+                if(lstTrangThai[i] == "cp")
                 {
                     DiemDanh ddEntities = new DiemDanh();
                     ddEntities.bhID = bhinsert;
@@ -95,13 +108,13 @@ namespace aptech.Controllers
                                          where svmh1.mhmID == mhmDD && svmh1.svID == dssv[i]
                                          select svmh1.svmhID).First();
                     ddEntities.vang = 2;
-                    ddEntities.lydo = id[i][1];
+                    ddEntities.lydo = lstLyDo[i];
                     _context.DiemDanhs.Add(ddEntities);
                     _context.SaveChanges();
                 }
                 else
                 {
-                    if (id[i][0] == "kp")
+                    if (lstTrangThai[i] == "kp")
                     {
                         DiemDanh ddEntities = new DiemDanh();
                         ddEntities.bhID = bhinsert;
@@ -113,7 +126,7 @@ namespace aptech.Controllers
                         _context.DiemDanhs.Add(ddEntities);
                         _context.SaveChanges();
                     }
-                    else if(id[i][0] == "cm")
+                    else if (lstTrangThai[i] == "cm")
                     {
                         DiemDanh ddEntities = new DiemDanh();
                         ddEntities.bhID = bhinsert;
@@ -128,9 +141,17 @@ namespace aptech.Controllers
                 }
             }
 
-            return RedirectToAction("Index");
+            return Json("/DiemDanh", JsonRequestBehavior.AllowGet);
 
             
+        }
+
+        
+        public ActionResult testMethod()
+        {
+                if (Request.Form["trangthai"].ToString() != null)
+                { var st = Request.Form["trangthai"].ToString(); }
+            return Json("/DiemDanh", JsonRequestBehavior.AllowGet);
         }
     }
 }

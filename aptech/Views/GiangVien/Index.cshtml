@@ -1,0 +1,103 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<aptech.Models.GiangVien>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-center">
+    <h2>Thông Tin Giảng Viên</h2>
+</div>
+
+<p>
+    @Html.ActionLink("Thêm Giang Viên", "Create", null, new { @class = "btn btn-primary" })
+
+    @using (Html.BeginForm("Index", "GiangVien", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        <div class="form-group">
+            <input type="text" value="@ViewBag.NameSearch" class="form-control" id="name" name="name" placeholder="Tim kiem">
+        </div>
+        <button type="submit" class="btn btn-default">Tim</button>
+    }
+</p>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayName("Tên")
+        </th>
+        <th>
+            @Html.DisplayName("Giới tính")
+        </th>
+        <th>
+            @Html.DisplayName("Ngày sinh")
+        </th>
+        <th>
+            @Html.DisplayName("Địa chỉ")
+        </th>
+        <th>
+            @Html.DisplayName("SDT")
+        </th>
+        
+        <th>
+            @Html.DisplayName("Thôi Việc")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="Item_@item.gvID">
+        <td>
+            @Html.DisplayFor(modelItem => item.gvTen)
+        </td>
+        <td>
+            @if (item.gvGioiTinh == true)
+            {
+                <span>Nam</span>
+            }
+            else
+            {
+                <span>Nu</span>
+            }
+        </td>
+        <td>
+            <span>@item.gvNgaySinh.Value.Day/@item.gvNgaySinh.Value.Month/@item.gvNgaySinh.Value.Year</span>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gvDiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gvDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gvThoiViec)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.gvID }, new { @class="btn btn-primary btn-xs" }) |
+           
+            <input type="button" class="btn btn-danger btn-xs" onclick="deletegv('@item.gvID')" value="Delete" /></td>
+    </tr>
+}
+
+</table>
+<div class="row col-lg-12">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "GiangVien", new { page, name = ViewBag.NameSearch }))
+</div>
+
+@section Scripts {
+    <script>
+        function deletegv(id) {
+            var cf = confirm("Ban chac chu?");
+            if (cf) {
+                $.ajax({
+                    url: '/GiangVien/Delete/' + id, type: 'GET', dataType: 'json',
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function (e) {
+                        alert(e.statusText);
+                    }
+                });
+            }
+            
+        }
+    </script>
+}

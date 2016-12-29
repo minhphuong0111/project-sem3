@@ -1,54 +1,60 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     _getAll();
 });
-
+isUpdate = false;
 function _getAll() {
     $.ajax({
-        url: "/MonHoc/layMonHoc",
+        url: "MonHoc/layMonHoc/",
         type: "GET",
-        contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (result) {
+        success: function (data) {
             var html = '';
-            $.each(result, function (item) {
+            
+            $.each(data, function (key,value) {
+               
                 html += '<tr>';
-                html += '<td>' + result[item].mhID + '</td>';
-                html += '<td>' + result[item].mhTen + '</td>';
-                html += '<td><a href="#" onclick="return _getById(' + result[item].StudentId + ')">Edit</a> | <a href="#" onclick="return _delete(' + result[item].StudentId + ')">Delete</a></td>';
+                html += '<td>' + value.mhID + '</td>';
+                html += '<td>' + value.mhTen + '</td>';
+                html += '<td><button type="button" onclick="return _getById(' + "'"+value.mhID+"'" + ');">Edit</button> | <a href="#" onclick="return _delete(' + "'" + value.mhID + "'" + ')">Delete</a></td>';
                 html += '</tr>';
             });
-            $('#list tbody').html(html);
+            $('#ds tbody').html(html);
         },
         error: function (errormessage) {
             alert(errormessage.responseText);
         }
     });
 
-    $('#btnUpdate').hide();
-    $('#btnAdd').show();
+    $('#btnEdit').hide();
+    $('#btnSave').show();
     return false;
 }
 function _getById(id) {
+    $("#btnSave").hide();
+    $("#btnEdit").show();
     $.ajax({
+        
         url: '/MonHoc/layMonHocID/' + id,
         // data: JSON.stringify(dto),
+        
         type: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (result) {
-            $('#StudentId').val(result.StudentId);
-            $('#Name').val(result.Name);
-            $('#Status').val(result.Status);
+        success: function (data) {
+            $.each(data, function (key, value) {
+                $('#mhid').val(value.mhID);
+                $('#mhten').val(value.mhTen);
 
-            $('#myModal').modal('show');
-            $('#btnUpdate').show();
-            $('#btnAdd').hide();
+                isUpdate = true;
+                $('#mhid').prop("disabled", true);
+                $("#bookModal").modal('show');
+            });
         },
         error: function (errormessage) {
             alert(errormessage.responseText);
         }
     });
+    
     return false;
 }
 function _add() {
@@ -64,6 +70,7 @@ function _add() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (result) {
+           
             _getAll();
             $('#myModal').modal('hide');
         },
@@ -112,3 +119,59 @@ function _delete(id) {
         });
     }
 }
+
+// hàm Insert và Update một record
+function _btnAdd()
+{
+    
+    var data = {
+        mhID: $("#mhid").val(),
+        mhTen: $("#mhten").val(),
+
+    }
+    
+        
+    $.ajax({
+        url: 'MonHoc/themMH/',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
+        success: function (data) {
+            alert('afjksl');
+            _getAll();
+            $("#bookModal").modal('hide');
+            clear();
+        },
+        error: function (err) {
+            alert("Error: " + err.responseText);
+        }
+    });
+}
+function _btnEdit()
+{
+    $("#btnEdit").show();
+    var data = {
+        mhID: $("#mhid").val(),
+        mhTen: $("#mhten").val(),
+
+    }
+    
+    $.ajax({
+        url: 'MonHoc/suaMH/',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
+        success: function (data) {
+            _getAll();
+            isUpdatable = false;
+            $("#bookModal").modal('hide');
+            clear();
+        },
+        error: function (err) {
+            alert("Error: " + err.responseText);
+        }
+    });
+    $("#btnSave").show();
+    $("#btnEdit").hide();
+}
+    

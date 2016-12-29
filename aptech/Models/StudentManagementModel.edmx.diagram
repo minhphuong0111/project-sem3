@@ -6,17 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="955107ca65374a439aa27f0e72253ebb" Name="Diagram1">
         <EntityTypeShape EntityType="StudentManagementModel.BuoiHoc" Width="1.5" PointX="5.25" PointY="3.25" />
-        <EntityTypeShape EntityType="StudentManagementModel.ChuongTrinhHoc" Width="1.5" PointX="1.5" PointY="14" />
+        <EntityTypeShape EntityType="StudentManagementModel.ChuongTrinhHoc" Width="1.5" PointX="1.5" PointY="10" />
         <EntityTypeShape EntityType="StudentManagementModel.DiemDanh" Width="1.5" PointX="7.5" PointY="3.25" />
-        <EntityTypeShape EntityType="StudentManagementModel.GiangVien" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="StudentManagementModel.LichThi" Width="1.5" PointX="5.25" PointY="10.25" />
-        <EntityTypeShape EntityType="StudentManagementModel.LopHoc" Width="1.5" PointX="3.75" PointY="13.875" />
-        <EntityTypeShape EntityType="StudentManagementModel.MonHoc" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="StudentManagementModel.GiangVien" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="StudentManagementModel.LichThi" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="StudentManagementModel.LopHoc" Width="1.5" PointX="3.75" PointY="9.875" />
+        <EntityTypeShape EntityType="StudentManagementModel.MonHoc" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="StudentManagementModel.MonHocMo" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="StudentManagementModel.Quanly" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="StudentManagementModel.SinhVien" Width="1.5" PointX="6" PointY="13.25" />
+        <EntityTypeShape EntityType="StudentManagementModel.Quanly" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentManagementModel.SinhVien" Width="1.5" PointX="6" PointY="9.25" />
         <EntityTypeShape EntityType="StudentManagementModel.SinhVienMonHoc" Width="1.5" PointX="8.25" PointY="7.25" />
-        <EntityTypeShape EntityType="StudentManagementModel.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentManagementModel.sysdiagram" Width="1.5" PointX="10.75" PointY="4.75" />
         <AssociationConnector Association="StudentManagementModel.fk_BuoiHoc_mhmID" />
         <AssociationConnector Association="StudentManagementModel.FK_DiemDanh_BuoiHoc" />
         <AssociationConnector Association="StudentManagementModel.fk_lophoc_ctID" />
