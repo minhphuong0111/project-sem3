@@ -6,7 +6,9 @@
     <title>index</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Script/js")
+            
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     <link href="~/Content/admindashboard.css" rel="stylesheet" type="text/css" />
    
 </head>
@@ -42,10 +44,9 @@
         </div> <!-- end content -->
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    
     @RenderSection("scripts", required: false)
     <script type="text/javascript" src="~/Scripts/monHoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/DiemDanh.js"></script>
+    
 </body>
 </html>

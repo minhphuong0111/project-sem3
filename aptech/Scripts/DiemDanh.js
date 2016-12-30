@@ -1,5 +1,6 @@
 ﻿var svarr = [];
 var i = 0;
+var mhm = "";
 
 function _getSV(mhmID)
 {
@@ -9,6 +10,7 @@ function _getSV(mhmID)
         dataType: "json",
         data: { mhmID: $("#mhmID").val() },
         success: function (data) {
+            
             var html = '';
             
             $.each(data, function (key, value) {
@@ -24,6 +26,7 @@ function _getSV(mhmID)
                 svarr[i] = value.svID;
                 i++;
             });
+            mhm = $("#mhmID").val();
             $('#ds tbody').html(html);
             $("input").on("click", function () {
                 txtname = $(this).attr("name");
@@ -99,6 +102,8 @@ function _tbdata() {
     frmData.append("trangthai", trangthaiarr);
     frmData.append("lydo", lydoarr);
     frmData.append("ngaythang", ngay);
+    frmData.append("svID", svarr);
+    frmData.append("mhmID", mhm);
 
     //var model = JSON.stringify({ 'ds': dataarr });
  //   var postData = { values: dataarr };

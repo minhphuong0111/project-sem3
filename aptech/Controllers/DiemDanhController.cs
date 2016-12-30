@@ -14,6 +14,7 @@ namespace aptech.Controllers
         string mhmDD { get; set; }
         int bhinsert { get; set; }
         List<string> dssv = new List<string>();
+        List<string> svarr = new List<string>();
         functionDiemDanh ddModel = new functionDiemDanh();
         private StudentManagementEntities _context = new StudentManagementEntities();
         // GET: DiemDanh
@@ -21,15 +22,30 @@ namespace aptech.Controllers
         {
             
             ddModel.getMHbyGV(Session["user"].ToString());
-            ViewBag.lstmhm = ddModel.lstmhm;
-
+            var lstmhm = ddModel.lstmhm;
+            List<DateTime> lstngay = new List<DateTime>();
+            foreach(string item in lstmhm)
+            {
+                var temp = (from p in _context.BuoiHocs
+                            where p.mhmID == item
+                            select p.bhNgay);
+                if(temp.Any())
+                {
+                    var gettemp = temp.FirstOrDefault();
+                    lstngay.Add(gettemp.GetValueOrDefault());
+                }
+                
+            }
+            ViewBag.ngay = lstngay;
+            ViewBag.lstmhm = lstmhm;
             return View();
         }
 
         public ActionResult lstSV(string mhmID)
         {
             mhmDD = mhmID;
-            Session["mhm"] = mhmID;
+            
+
             List<SinhVien> lstSV = new List<SinhVien>();
 
             var query = 
@@ -79,8 +95,10 @@ namespace aptech.Controllers
         [HttpPost]
         public ActionResult sendDD()
         {
+            mhmDD = Request.Form["mhmID"].ToString();
             var trangthai = Request.Form["trangthai"].ToString().Split(',');
             var lydo = Request.Form["lydo"].ToString().Split(',');
+            var sv = Request.Form["svID"].ToString().Split(',');
             List<string> lstTrangThai = new List<string>();
             List<string> lstLyDo = new List<string>();
             foreach(string tt in trangthai)
@@ -91,6 +109,11 @@ namespace aptech.Controllers
             {
                 lstLyDo.Add(ld);
             }
+            foreach (string lsv in sv)
+            {
+                svarr.Add(lsv);
+            }
+       //     int tst = dssv.Count();
             
            // List<List<string>> diemdanhData = new List<List<string>>();
 
@@ -100,13 +123,17 @@ namespace aptech.Controllers
 
             for (int i = 0; i < loop; i++ )
             {
+                string sMSSV = svarr[i];
+                
                 if(lstTrangThai[i] == "cp")
                 {
                     DiemDanh ddEntities = new DiemDanh();
                     ddEntities.bhID = bhinsert;
                     ddEntities.svmhID = (from svmh1 in _context.SinhVienMonHocs
-                                         where svmh1.mhmID == mhmDD && svmh1.svID == dssv[i]
+                                         where svmh1.mhmID == mhmDD && svmh1.svID == sMSSV
                                          select svmh1.svmhID).First();
+              //      var svmhidTemp = _context.SinhVienMonHocs.First(m => m.mhmID == mhmDD && m.svID == svarr[i]);
+              //      ddEntities.svmhID = svmhidTemp.svmhID;
                     ddEntities.vang = 2;
                     ddEntities.lydo = lstLyDo[i];
                     _context.DiemDanhs.Add(ddEntities);
@@ -119,8 +146,9 @@ namespace aptech.Controllers
                         DiemDanh ddEntities = new DiemDanh();
                         ddEntities.bhID = bhinsert;
                         ddEntities.svmhID = (from svmh1 in _context.SinhVienMonHocs
-                                             where svmh1.mhmID == mhmDD && svmh1.svID == dssv[i]
+                                             where svmh1.mhmID == mhmDD && svmh1.svID == sMSSV
                                              select svmh1.svmhID).First();
+                   //     var svmhidTemp = _context.SinhVienMonHocs.First(m => m.mhmID == mhmDD && m.svID == svarr[i]);
                         ddEntities.vang = 1;
                         ddEntities.lydo = "";
                         _context.DiemDanhs.Add(ddEntities);
@@ -131,8 +159,9 @@ namespace aptech.Controllers
                         DiemDanh ddEntities = new DiemDanh();
                         ddEntities.bhID = bhinsert;
                         ddEntities.svmhID = (from svmh1 in _context.SinhVienMonHocs
-                                             where svmh1.mhmID == mhmDD && svmh1.svID == dssv[i]
+                                             where svmh1.mhmID == mhmDD && svmh1.svID == sMSSV
                                              select svmh1.svmhID).First();
+                  //      var svmhidTemp = _context.SinhVienMonHocs.First(m => m.mhmID == mhmDD && m.svID == svarr[i]);
                         ddEntities.vang = 0;
                         ddEntities.lydo = "";
                         _context.DiemDanhs.Add(ddEntities);
